@@ -3,6 +3,8 @@ package com.rumahsosial.gituse
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -10,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rumahsosial.gituse.databinding.ActivityMainBinding
 import com.rumahsosial.gituse.detail.DetailActivity
+import com.rumahsosial.gituse.favorite.FavoriteActivity
 import com.rumahsosial.gituse.model.ResponseUserGithubs
 import com.rumahsosial.gituse.util.Result
 
@@ -63,6 +66,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewModel.getUser()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.favorite -> {
+                Intent(this, FavoriteActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 

@@ -3,6 +3,7 @@ package com.rumahsosial.gituse.detail
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.ColorRes
@@ -34,6 +35,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         //get username di main actvity, ini kode diganti buat add room
@@ -115,9 +117,18 @@ class DetailActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean{
+        when(item.itemId){
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }
-
-
 fun FloatingActionButton.changeIconColor(@ColorRes color : Int){
     imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this.context, color))
 }

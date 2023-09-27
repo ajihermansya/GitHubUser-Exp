@@ -43,7 +43,6 @@ class DetailViewModel(private val db : DbModule) : ViewModel() {
             }
             isFavorite = !isFavorite
         }
-
     }
 
     fun findFavorite(id: Int, listenFavorite:()->Unit){
@@ -51,6 +50,7 @@ class DetailViewModel(private val db : DbModule) : ViewModel() {
             val user = db.userDao.findById(id)
             if (user != null ) {
                 listenFavorite()
+                isFavorite = true
             }
         }
     }
@@ -143,6 +143,8 @@ class DetailViewModel(private val db : DbModule) : ViewModel() {
 
             }
         }
+
+
     }
 
 
