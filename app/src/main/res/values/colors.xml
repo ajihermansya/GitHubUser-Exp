@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blueocean">#5AC6C6</color>
+    <color name="blue">#007994</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="button">#CDEFF0</color>
+    <color name="textstyle">#5AC6C6</color>
+    <color name="buttonlogin">#FACD4E</color>
+    <color name="card">#9DDFDE</color>
+    <color name="text1">#007994</color>
+    <color name="colorTextBackground">#f5f5f5</color>
+    <color name="red">#FF0000</color>
+
+</resources>
