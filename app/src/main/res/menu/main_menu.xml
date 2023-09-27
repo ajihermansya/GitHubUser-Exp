@@ -7,4 +7,8 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_favorit"/>
 
+    <item android:id="@+id/setting"
+        android:icon="@drawable/icon_settings"
+        android:title="setting"
+        app:showAsAction="always"/>
 </menu>

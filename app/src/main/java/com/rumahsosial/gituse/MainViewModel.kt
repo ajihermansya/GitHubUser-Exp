@@ -5,9 +5,12 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.rumahsosial.gituse.model.ResponseUserGithubs
 import com.rumahsosial.gituse.remote.ApiClient
+import com.rumahsosial.gituse.setting.preferences.SettingPreferences
 import com.rumahsosial.gituse.util.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -17,7 +20,8 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+//setting themen agar permanen
+class MainViewModel(private val preferences : SettingPreferences) : ViewModel() {
 
     /*val resultSucces = MutableLiveData<MutableList<ResponseUserGithubs.Item>>()
     val resultError = MutableLiveData<String>()
@@ -25,6 +29,8 @@ class MainViewModel : ViewModel() {
      */
 
     val resultUser = MutableLiveData<Result>()
+
+    fun getTheme() = preferences.getThemeSetting().asLiveData()
 
     fun getUser() {
         viewModelScope.launch {
@@ -92,6 +98,12 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    class Factory(private val preferences: SettingPreferences) :
+        ViewModelProvider.NewInstanceFactory() {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            MainViewModel(preferences) as T
+
+    }
 
 
 }

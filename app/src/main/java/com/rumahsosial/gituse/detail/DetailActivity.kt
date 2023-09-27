@@ -27,9 +27,11 @@ import com.rumahsosial.gituse.util.Result
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     //penambhaan kode
+
     private val viewModel by viewModels<DetailViewModel>{
         DetailViewModel.Factory(DbModule(this))
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

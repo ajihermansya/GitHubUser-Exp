@@ -7,14 +7,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rumahsosial.gituse.databinding.ActivityMainBinding
 import com.rumahsosial.gituse.detail.DetailActivity
 import com.rumahsosial.gituse.favorite.FavoriteActivity
 import com.rumahsosial.gituse.model.ResponseUserGithubs
+import com.rumahsosial.gituse.setting.SettingActivity
+import com.rumahsosial.gituse.setting.preferences.SettingPreferences
 import com.rumahsosial.gituse.util.Result
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -30,13 +36,24 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel>{
+        MainViewModel.Factory(SettingPreferences(this))
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//mode setting tema anjay ni ya
+        viewModel.getTheme().observe(this) {
+            if (it) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         //agar ukuran item sama & untuk performa recyle view lwbih baik
@@ -80,9 +97,17 @@ class MainActivity : AppCompatActivity() {
                     startActivity(this)
                 }
             }
+            R.id.setting -> {
+                Intent(this, SettingActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }
 
 
