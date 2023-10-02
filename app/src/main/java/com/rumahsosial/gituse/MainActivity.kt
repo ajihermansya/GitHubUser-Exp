@@ -10,14 +10,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rumahsosial.gituse.databinding.ActivityMainBinding
 import com.rumahsosial.gituse.detail.DetailActivity
 import com.rumahsosial.gituse.favorite.FavoriteActivity
 import com.rumahsosial.gituse.model.ResponseUserGithubs
-import com.rumahsosial.gituse.setting.SettingActivity
+import com.rumahsosial.gituse.setting.ThemaActivity
 import com.rumahsosial.gituse.setting.preferences.SettingPreferences
 import com.rumahsosial.gituse.util.Result
 
@@ -98,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             R.id.setting -> {
-                Intent(this, SettingActivity::class.java).apply {
+                Intent(this, ThemaActivity::class.java).apply {
                     startActivity(this)
                 }
             }

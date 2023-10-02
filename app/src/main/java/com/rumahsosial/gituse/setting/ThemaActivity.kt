@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
-import com.rumahsosial.gituse.R
 import com.rumahsosial.gituse.databinding.ActivitySettingBinding
 import com.rumahsosial.gituse.setting.preferences.SettingPreferences
 
-class SettingActivity : AppCompatActivity() {
+class ThemaActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding
     private val viewModel by viewModels<SettingViewModel> {
         SettingViewModel.Factory(SettingPreferences(this))

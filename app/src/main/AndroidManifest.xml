@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Gituse"
         tools:targetApi="31">
         <activity
-            android:name=".setting.SettingActivity"
+            android:name=".setting.ThemaActivity"
             android:label="Setting"
             android:exported="false" />
         <activity
